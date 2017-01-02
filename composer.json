@@ -1,0 +1,24 @@
+{
+    "name": "hamzahjamad/billplz",
+    "description": "Just another Billplz package for Laravel",
+    "require": {
+        "php": "^5.3.3 | ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "whatthejeff/nyancat-phpunit-resultprinter": "~1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hamzahjamad",
+            "email": "hamzahjamad@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hamzahjamad\\BillPlz\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

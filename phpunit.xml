@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<phpunit
+	backupGlobals="false"
+    backupStaticAttributes="false" 
+	colors="true"
+	printerFile="vendor/whatthejeff/nyancat-phpunit-resultprinter/src/NyanCat/PHPUnit/ResultPrinter.php"
+	printerClass="NyanCat\PHPUnit\ResultPrinter"
+	convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false">
+	<testsuite>
+		<directory suffix=".php">tests</directory>
+	</testsuite>
+
+	<filter>
+		<whitelist>
+			<directory suffix=".php"></directory>
+		</whitelist>
+	</filter>
+</phpunit>	
