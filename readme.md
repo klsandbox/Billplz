@@ -20,40 +20,43 @@ To use the Sandbox Mode api, just pass the false as a second argument.
 ##### Create a new bill.
 `$billplz = new Hamzahjamad\BillPlz\BillPlz("Token_here");`
 
-`$data = [`
-        `"collection_id" => "some_collection_id",`
-        `"description" => "some_description",`
-        `"name" => "test",`
-        `"email" => "test@example.com",`
-        `"amount" => 300,`
-        `"callback_url" => "https://test.com/test",`
-        `];`
+```
+$data = [
+        "collection_id" => "some_collection_id",
+        "description" => "some_description",
+        "name" => "test",
+        "email" => "test@example.com",
+        "amount" => 300,
+        "callback_url" => "https://test.com/test",
+        ];        
+```
 
 `$billplz->setBill($data);`
 
 
 ### List of available method
 #### Collection
-`setCollection(array $data)`
-`setOpenCollection(array $data)`
-`deactivateCollection($collection_id)`
-`activateCollection($collection_id)`
+* `setCollection(array $data)`
+* `setOpenCollection(array $data)`
+* `deactivateCollection($collection_id)`
+* `activateCollection($collection_id)`
 
 #### Bill
-`setBill(array $data)`
-`getBill($bill_id)`
-`deleteBill($bill_id)`
+* `setBill(array $data)`
+* `getBill($bill_id)`
+* `deleteBill($bill_id)`
 
 #### Bank Account
-`verifyAccount($bank_account)`
+* `verifyAccount($bank_account)`
 
 
 ## Run Test File
 To run the test, create a new secret-env-plain file. In this file, put this two line,
 
-
-`TOKEN=PUT_TOKEN_HERE`
-`BANK_ACC=PUT_BANK_ACCOUNT_HERE`
+```
+TOKEN=PUT_TOKEN_HERE
+BANK_ACC=PUT_BANK_ACCOUNT_HERE
+```
 
 
 replace the PUT_TOKEN_HERE and PUT_BANK_ACCOUNT_HERE text with the token and bank account you filled on the staging server. The test will run using the staging server api.
