@@ -1,0 +1,8 @@
+machine:
+  php:
+    version: 7.0.4
+
+test:
+  override:
+    - openssl aes-256-cbc -d -in secret-env-cipher -out secret-env-plain -k $KEY
+    - vendor/bin/phpunit
