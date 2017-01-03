@@ -9,7 +9,7 @@ After installing via composer, simply use it by creating a new object and put th
 
 `$billplz = new Hamzahjamad\BillPlz\BillPlz("Token_here");`
 
-To use the Sandbox Mode api, just pass the false as a second argument.
+To use the Sandbox Mode api, just pass `false` as a second argument.
 
 `$billplz = new Hamzahjamad\BillPlz\BillPlz("Token_here" , false);`
 
@@ -51,7 +51,7 @@ $data = [
 
 
 ## Run Test File
-To run the test, create a new secret-env-plain file. In this file, put this two line,
+To run the test, create a new `secret-env-plain` file. In this file, put this two line,
 
 ```
 TOKEN=PUT_TOKEN_HERE
