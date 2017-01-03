@@ -1,3 +1,4 @@
 vendor
 composer.lock
 secret-env-plain
+encrypt_key.sh
