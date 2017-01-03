@@ -4,17 +4,44 @@ namespace Hamzahjamad\BillPlz;
 
 class BillPlzTest extends \PHPUnit_Framework_TestCase
 {
-	protected $billplz;
-	protected $bank_account = 626236364646;
-	protected $collection_id = "fohi29f5"; 
 
-	protected $bill_id;
+
+
+	protected $billplz;
+
+	
 
     protected function setUp()
     {
     	//the token of logged user and false to use sandbox endpoint
-        $this->billplz = new BillPlz( '975a7240-e58c-4f49-8a76-bccaace63648' , false);
+        $this->billplz = new BillPlz( $this->readKeyFile()["TOKEN"] , false);
     }
+
+
+
+    private function readKeyFile()
+    {
+    	$path =  __DIR__."/../secret-env-plain";
+
+    	$secret_file = fopen( $path , "r") or die("Unable to open file!");
+		
+		$keys = [];
+
+		while(! feof($secret_file))
+		  {
+		  	$line = fgets($secret_file);
+		  	$separate_line = explode("=", $line);
+		  	$keys[$separate_line[0]] = $separate_line[1];
+		  }
+
+		fclose($secret_file);
+
+		$keys = array_filter(array_map('trim', $keys));
+
+		return $keys;
+    }
+
+
 
     public function titleProvider()
     {
@@ -22,13 +49,12 @@ class BillPlzTest extends \PHPUnit_Framework_TestCase
     }
 
 	
+
 	 /**
      * @dataProvider titleProvider
      */
 	public function testCreatingANewCollection($title)
 	{
-		//$title = "My Third API Collection";
-
 		$response = $this->billplz->setCollection(['title'=>$title]);
 
 		$this->assertEquals(strtoupper($title), $response['title']);
@@ -43,7 +69,7 @@ class BillPlzTest extends \PHPUnit_Framework_TestCase
 	{
 		$data = [
 			'title'=>$title,
-			'description'=>'dfasdfasdfafd',
+			'description'=>substr( md5(rand()), 0, 7),
 			'amount'=>100,
 		];
 
@@ -53,32 +79,30 @@ class BillPlzTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	/**
-     * @dataProvider titleProvider
-     */
-	public function testDeactivateCollection($title)
-	{
-		$response = $this->billplz->deactivateCollection($this->collection_id);
 
-		$this->assertCount(0, $response);
+	public function testDeactivateAndActivateCollection()
+	{
+		$collection_title = ['title'=>($this->titleProvider())[0][0],];
+
+		$collection_id = ($this->billplz->setCollection($collection_title))['id'];
+
+		$deactivate_response = $this->billplz->deactivateCollection($collection_id);
+		$activate_response = $this->billplz->activateCollection($collection_id);
+
+		//zero count means we have a correct output
+		$this->assertCount(0, $deactivate_response);
+		$this->assertCount(0, $activate_response);
 	}
 
 
-	/**
-     * @dataProvider titleProvider
-     */
-	public function testactivateCollection($title)
-	{
-		$response = $this->billplz->activateCollection($this->collection_id);
-
-		$this->assertCount(0, $response);
-	}
 
 	private function setBill()
 	{
+		$collection_title = ['title'=>($this->titleProvider())[0][0],];
+
 		$data = [
-			"collection_id" => "gid6klwb",
-			"description" => "esdfasdfa",
+			"collection_id" => ($this->billplz->setCollection($collection_title))['id'], //create new collection
+			"description" => substr( md5(rand()), 0, 7),
 			"name" => "test",
 			"email" => "test@example.com",
 			"amount" => 300,
@@ -89,11 +113,13 @@ class BillPlzTest extends \PHPUnit_Framework_TestCase
 	}
 
 
+
 	public function testCreatingANewBill()
 	{
 		$response = $this->setBill();
 		$this->assertEquals("test@example.com", $response['email']);
 	}
+
 
 
 	public function testgetABill()
@@ -103,6 +129,7 @@ class BillPlzTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals( "test@example.com", $response['email']);
 	}
+
 
 
 	public function testdeleteABill()
@@ -115,9 +142,10 @@ class BillPlzTest extends \PHPUnit_Framework_TestCase
 	}
 
 
+
 	public function testVerifyAccountMethodIsWorking()
 	{
-		$response = $this->billplz->verifyAccount($this->bank_account);
+		$response = $this->billplz->verifyAccount($this->readKeyFile()["BANK_ACC"]);
 
 		$this->assertNotNull($response['name']);
 	}
