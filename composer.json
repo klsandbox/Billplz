@@ -1,5 +1,5 @@
 {
-    "name": "klsandbox/Billplz",
+    "name": "klsandbox/billplz",
     "description": "Just another Billplz package for Laravel",
     "require": {
         "php": "^5.3.3 | ^7.0"
