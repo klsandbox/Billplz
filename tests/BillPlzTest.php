@@ -1,6 +1,6 @@
 <?php
 
-namespace Hamzahjamad\BillPlz;
+namespace Klsandbox\BillPlz;
 
 class BillPlzTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,5 +1,5 @@
 {
-    "name": "hamzahjamad/billplz",
+    "name": "klsandbox/Billplz",
     "description": "Just another Billplz package for Laravel",
     "require": {
         "php": "^5.3.3 | ^7.0"
@@ -11,13 +11,13 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "hamzahjamad",
-            "email": "hamzahjamad@gmail.com"
+            "name": "Ibrahim Abdul Rahim",
+            "email": "ibrahim@klsandbox.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Hamzahjamad\\BillPlz\\": "src/"
+            "Klsandbox\\BillPlz\\": "src/"
         }
     },
     "minimum-stability": "stable"

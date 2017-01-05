@@ -7,18 +7,19 @@ This client is a simple Billplz client that can be used with Laravel 5. You may 
 ## How To Use
 After installing via composer, simply use it by creating a new object and put the Api key as it argument.
 
-`$billplz = new \Hamzahjamad\BillPlz\BillPlz("Token_here");`
+`$billplz = new \Klsandbox\BillPlz\BillPlz("Token_here");`
 
 To use the Sandbox Mode api, just pass `false` as a second argument.
 
-`$billplz = new \Hamzahjamad\BillPlz\BillPlz("Token_here" , false);`
+`$billplz = new \Klsandbox\BillPlz\BillPlz("Token_here" , false);`
 
 ##### Create a new collection.
-`$billplz = new \Hamzahjamad\BillPlz\BillPlz("Token_here");`
+`$billplz = new \Klsandbox\BillPlz\BillPlz("Token_here");`
+
 `$billplz->setCollection(['title'=>'Ahmad Shop']);`
 
 ##### Create a new bill.
-`$billplz = new \Hamzahjamad\BillPlz\BillPlz("Token_here");`
+`$billplz = new \Klsandbox\BillPlz\BillPlz("Token_here");`
 
 ```
 $data = [
@@ -63,7 +64,7 @@ replace the PUT_TOKEN_HERE and PUT_BANK_ACCOUNT_HERE text with the token and ban
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within this BillPlz client, please send an e-mail to Hamzah Jamad at hamzahjamad@gmail.com. 
+If you discover a security vulnerability within this BillPlz client, please send an e-mail to Ibrahim Abdul Rahim at ibrahim@klsandbox.com. 
 
 ## License
 
