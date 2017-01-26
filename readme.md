@@ -62,6 +62,8 @@ BANK_ACC=PUT_BANK_ACCOUNT_HERE
 
 replace the PUT_TOKEN_HERE and PUT_BANK_ACCOUNT_HERE text with the token and bank account you filled on the staging server. The test will run using the staging server api.
 
+
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within this BillPlz client, please send an e-mail to Ibrahim Abdul Rahim at ibrahim@klsandbox.com. 
